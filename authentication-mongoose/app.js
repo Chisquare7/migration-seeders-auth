@@ -1,5 +1,4 @@
 const express = require("express");
-const sequelize = require("./config/sequelizeConfig");
 const userRoute = require("./users/userRoute")
 const categoryRoute = require("./categories/categoryRoute");
 const supplierRoute = require("./suppliers/supplierRoute");
@@ -20,15 +19,6 @@ app.use("/categories", categoryRoute);
 app.use("/suppliers", supplierRoute);
 app.use("/items", itemRoute);
 
-
-sequelize
-	.authenticate()
-	.then(() => {
-		console.log("Successfully connected to the database");
-	})
-	.catch((error) => {
-		console.log("Failed database connection", error);
-	});
 
 app.listen(PORT, () => {
 	console.log(`server started running at: http://localhost:${PORT}`);
