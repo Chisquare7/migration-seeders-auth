@@ -3,12 +3,13 @@
 /** @type {import('sequelize-cli').Migration} */
 const adminDetails = [
 	{
-    name: "Folorunsho",
-    email: "folorunsho.agent@gmail.com",
+		name: "pelumi",
+		email: "pelumi345@gmail.com",
+		password: "pelumi247",
 		role: "management_admin",
-		user_id: "61f071d8-cd0a-476e-b4a3-bb6f6061f02e",
+		user_id: "95aa4e1d-bda8-4941-8314-ffe89c34f0df",
 		createdAt: new Date(),
-		updatedAt: new Date()
+		updatedAt: new Date(),
 	},
 ];
 module.exports = {

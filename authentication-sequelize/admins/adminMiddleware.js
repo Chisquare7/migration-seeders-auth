@@ -14,6 +14,12 @@ const validateAdmin = (req, res, next) => {
                 "string.empty": `"email" can not be empty`,
                 "string.required": `"email" is required`,
             }),
+            password: joi.string().empty().required().min(6).messages({
+				"string.base": `"password" must be a "text"`,
+				"string.empty": `"password" can not be empty`,
+				"string.required": `"password" is required`,
+				"string.min": `"password" should have a minimum length of {6}`,
+			}),
             role: joi.string().empty().valid("user_admin", "management_admin"),
             user_id: joi.string().empty().required().messages({
                 "string.base": `"user_id" must be a "text"`,

@@ -5,6 +5,8 @@ const categoryRoute = require("./categories/categoryRoute");
 const supplierRoute = require("./suppliers/supplierRoute");
 const itemRoute = require("./items/itemRoute");
 const adminRoute = require("./admins/adminRoute");
+const {requireAuthenticate} = require("./globalMiddleware/globalMiddleware")
+const { requireAdminAuth } = require("./globalMiddleware/globalMiddleware");
 const bodyParser = require("body-parser")
 require("dotenv").config();
 
@@ -19,6 +21,7 @@ app.use("/admins", adminRoute);
 app.use("/categories", categoryRoute);
 app.use("/suppliers", supplierRoute);
 app.use("/items", itemRoute);
+
 
 
 sequelize

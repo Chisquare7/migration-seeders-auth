@@ -21,4 +21,18 @@ const createItem = async (req, res) => {
     });
 }
 
-module.exports = { createItem };
+
+const getItems = async (req, res) => {
+    try {
+        const items = await itemModel.findAll();
+
+        return res.status(200).json(items);
+    } catch (error) {
+        console.error(error);
+        return res.status(500).json({
+            error: "An error occurred while fetching items"
+        })
+    }
+}
+
+module.exports = { createItem, getItems };
