@@ -4,6 +4,14 @@ const itemModel = require("../models/itemModel")
 const createItem = async (req, res) => {
     const itemDetails = req.body
 
+    const isAdmin = req.admin
+
+    if (!isAdmin) {
+        return res.status(401).json({
+					message: "Unauthorized. Admin access required",
+				});
+    }
+
     const newItem = await itemModel.create({
         name: itemDetails.name,
         description: itemDetails.description,

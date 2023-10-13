@@ -5,6 +5,8 @@ const categoryRoute = require("./itemCategories/categoryRoute");
 const supplierRoute = require("./itemSuppliers/supplierRoute");
 const itemRoute = require("./items/itemRoute");
 const adminRoute = require("./admins/adminRoute");
+const {requireAuthenticate} = require("./globalMiddleware/globalMiddleware")
+const { requireAdminAuth } = require("./globalMiddleware/globalMiddleware");
 const bodyParser = require("body-parser")
 require("dotenv").config();
 
@@ -20,7 +22,8 @@ app.use("/users", userRoute)
 app.use("/admins", adminRoute);
 app.use("/categories", categoryRoute);
 app.use("/suppliers", supplierRoute);
-app.use("/items", itemRoute);
+app.use("/items", requireAuthenticate, itemRoute);
+app.use("/admin/items", requireAdminAuth, itemRoute);
 
 
 app.listen(PORT, () => {
